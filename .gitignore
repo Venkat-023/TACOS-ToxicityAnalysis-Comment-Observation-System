@@ -1,0 +1,78 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ===============================
+# Virtual Environments
+# ===============================
+venv/
+env/
+myenv/
+.venv/
+
+# ===============================
+# Jupyter / Notebooks
+# ===============================
+.ipynb_checkpoints/
+
+# ===============================
+# PyTorch / ML Models (IMPORTANT)
+# ===============================
+*.pt
+*.pth
+*.bin
+*.ckpt
+
+# HuggingFace model folders
+models/
+model/
+toxic_model/model.pt
+toxic_model/*.pt
+
+# Tokenizers / large HF files
+tokenizer.json
+tokenizer_config.json
+vocab.txt
+merges.txt
+
+# ===============================
+# Data
+# ===============================
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# OS Files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Streamlit
+# ===============================
+.streamlit/
+
+# ===============================
+# IDEs
+# ===============================
+.vscode/
+.idea/
+*.swp
+
+# ===============================
+# FastAPI / Uvicorn
+# ===============================
+__pycache__/
