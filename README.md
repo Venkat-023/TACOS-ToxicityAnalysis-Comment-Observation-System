@@ -1,12 +1,3 @@
----
-title: TACOS
-emoji: "🛡️"
-colorFrom: blue
-colorTo: red
-sdk: docker
-app_port: 7860
----
-
 # TACOS
 
 TACOS stands for Toxicity Analysis & Comment Observation System. It is a machine-learning-based moderation project for detecting toxic, abusive, and harmful comments in user-generated content using a fine-tuned DistilBERT model, a FastAPI backend, and a Streamlit frontend.
