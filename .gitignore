@@ -40,6 +40,11 @@ tokenizer_config.json
 vocab.txt
 merges.txt
 
+# Keep deployment assets in this project tracked
+!Backend/toxic_model/model.pt
+!Backend/toxic_model/tokenizer.json
+!Backend/toxic_model/tokenizer_config.json
+
 # ===============================
 # Data
 # ===============================
