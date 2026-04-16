@@ -1,7 +1,8 @@
 from pathlib import Path
+import json
 import torch
 import torch.nn as nn
-from transformers import DistilBertConfig, DistilBertModel, DistilBertTokenizerFast
+from transformers import DistilBertConfig, DistilBertModel, PreTrainedTokenizerFast
 
 # -------------------------------------------------------------------
 # Paths
@@ -51,9 +52,17 @@ class DistilBertMultiLabel(nn.Module):
 # -------------------------------------------------------------------
 # Load Tokenizer (MUST match training)
 # -------------------------------------------------------------------
-tokenizer = DistilBertTokenizerFast.from_pretrained(
-    BASE_DIR,
-    local_files_only=True
+with open(BASE_DIR / "tokenizer_config.json", "r", encoding="utf-8") as f:
+    tokenizer_config = json.load(f)
+
+tokenizer = PreTrainedTokenizerFast(
+    tokenizer_file=str(BASE_DIR / "tokenizer.json"),
+    unk_token=tokenizer_config.get("unk_token", "[UNK]"),
+    sep_token=tokenizer_config.get("sep_token", "[SEP]"),
+    pad_token=tokenizer_config.get("pad_token", "[PAD]"),
+    cls_token=tokenizer_config.get("cls_token", "[CLS]"),
+    mask_token=tokenizer_config.get("mask_token", "[MASK]"),
+    model_max_length=tokenizer_config.get("model_max_length", MAX_LEN)
 )
 
 # -------------------------------------------------------------------
