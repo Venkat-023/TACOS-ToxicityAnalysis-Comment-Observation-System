@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 COPY Backend ./Backend
 COPY Frontend ./Frontend
+COPY .streamlit ./.streamlit
 COPY start.py ./start.py
 COPY README.md ./README.md
 
