@@ -1,6 +1,6 @@
 ---
 title: TACOS
-emoji: shield
+emoji: "🛡️"
 colorFrom: blue
 colorTo: red
 sdk: docker
