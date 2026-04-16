@@ -1,11 +1,12 @@
 import streamlit as st
 import requests
 from PIL import Image
+import os
 
 # ================== CONFIG ================== #
 st.set_page_config(page_title="TACOS", layout="wide")
 
-API_URL = "http://127.0.0.1:8000/moderate"  # FastAPI endpoint
+API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000/moderate")
 
 LABEL_COLS = [
     "toxic",
@@ -118,7 +119,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================== FLAGGED PAGE ================== #
 if st.session_state.page == "flagged":
     st.markdown('<h2 style="color:#ff6b6b;">🚨 Comment Blocked</h2>', unsafe_allow_html=True)
     st.markdown(
@@ -142,7 +142,6 @@ if st.session_state.page == "flagged":
 
     st.stop()
 
-# ================== MAIN INPUT ================== #
 col1, col2 = st.columns([1, 1.2])
 
 with col1:

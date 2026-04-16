@@ -1,7 +1,7 @@
 from pathlib import Path
 import torch
 import torch.nn as nn
-from transformers import DistilBertModel, DistilBertTokenizerFast
+from transformers import DistilBertConfig, DistilBertModel, DistilBertTokenizerFast
 
 # -------------------------------------------------------------------
 # Paths
@@ -29,9 +29,9 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class DistilBertMultiLabel(nn.Module):
     def __init__(self):
         super().__init__()
-        self.bert = DistilBertModel.from_pretrained(
-            "distilbert-base-uncased"
-        )
+        # Build the base architecture locally so container startup does not
+        # depend on downloading model weights from the internet.
+        self.bert = DistilBertModel(DistilBertConfig())
         self.dropout = nn.Dropout(0.3)
         self.classifier = nn.Linear(
             self.bert.config.hidden_size,
@@ -52,7 +52,8 @@ class DistilBertMultiLabel(nn.Module):
 # Load Tokenizer (MUST match training)
 # -------------------------------------------------------------------
 tokenizer = DistilBertTokenizerFast.from_pretrained(
-    "distilbert-base-uncased"
+    BASE_DIR,
+    local_files_only=True
 )
 
 # -------------------------------------------------------------------
