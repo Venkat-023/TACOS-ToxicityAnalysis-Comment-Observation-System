@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY Backend ./Backend
 COPY Frontend ./Frontend
 COPY start.py ./start.py
-COPY Readme.md ./Readme.md
+COPY README.md ./README.md
 
 EXPOSE 7860
 
